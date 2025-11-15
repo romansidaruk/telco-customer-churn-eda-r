@@ -46,13 +46,14 @@ Analiza porównawcza pozwoliła na wyciągnięcie kilku kluczowych wniosków biz
 
 Najważniejsza wizualizacja z projektu, która pokazuje, które zmienne najmocniej różnicują obie grupy. Widać wyraźne różnice w rozkładzie dla zmiennych `Contract`, `OnlineSecurity` czy `InternetService`.
 
-`[WSTAW TUTAJ ZRZUT EKRANU WYKRESU "plot_bar(df[, sapply(df, is.factor)], by = "Churn")"]`
+![](rozkłady_1.png)
+![](rozkłady_2.png)
 
 ### Macierz Korelacji i Rozkładów Zmiennych Numerycznych
 
 Wykres `ggpairs` pokazuje korelacje oraz gęstości rozkładów dla głównych zmiennych numerycznych.
 
-`[WSTAW TUTAJ ZRZUT EKRANU WYKRESU "ggpairs(df[, c("tenure", "MonthlyCharges", "TotalCharges")])"]`
+![](corr.png)
 
 ### Rozkład Miesięcznych Opłat (Churn vs. Brak Churnu)
 
