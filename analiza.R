@@ -2,7 +2,7 @@
 # ETAP 1: Wczytanie i przygotowanie danych
 # -----------------------------------------------------------------
 
-# Ładowanie bibliotek [cite: 2]
+# Ładowanie bibliotek 
 library(grid)
 library(knitr)
 library(binom)
@@ -21,7 +21,7 @@ library(kableExtra)
 library(wooldridge)
 library(xtable)
 
-# Ustawienia globalne chunków (opcjonalne poza Rnw) [cite: 2]
+# Ustawienia globalne chunków (opcjonalne poza Rnw) 
 opts_chunk$set(fig.path='figure/', fig.align='center', fig.pos='H')
 
 # Wczytanie danych 
@@ -30,30 +30,30 @@ df <-
   read.csv(header = TRUE, sep = ",", dec = ".", stringsAsFactors = TRUE,
            "WA_Fn-UseC_-Telco-Customer-Churn.csv")
 
-# Badanie struktury [cite: 7]
+# Badanie struktury 
 sapply(df, class)
 
-# Konwersja SeniorCitizen na factor [cite: 9]
+# Konwersja SeniorCitizen na factor 
 df$SeniorCitizen <- as.factor(df$SeniorCitizen)
 is.factor(df$SeniorCitizen)
 
-# Sprawdzenie wymiarów [cite: 10]
+# Sprawdzenie wymiarów 
 dim(df)
 
-# Ponowne sprawdzenie typów zmiennych [cite: 12]
+# Ponowne sprawdzenie typów zmiennych 
 sapply(df, class)
 
-# Usunięcie zbędnej kolumny [cite: 13]
+# Usunięcie zbędnej kolumny 
 df <- subset(df, select = -customerID)
 
-# Sprawdzenie brakujących wartości [cite: 15]
+# Sprawdzenie brakujących wartości 
 colSums(is.na(df))
 
 # -----------------------------------------------------------------
 # ETAP 2: Analiza całej populacji
 # -----------------------------------------------------------------
 
-# Definicja własnej funkcji podsumowania [cite: 18, 19]
+# Definicja własnej funkcji podsumowania 
 my.summary <- function(X, na.rm = FALSE){
   wynik <- c(min(X, na.rm = na.rm), quantile(X,0.25, na.rm = na.rm),
              median(X,na.rm = na.rm), mean(X, na.rm = na.rm), 
@@ -66,7 +66,7 @@ my.summary <- function(X, na.rm = FALSE){
   return(wynik)
 }
 
-# Obliczenie statystyk sumarycznych [cite: 20]
+# Obliczenie statystyk sumarycznych 
 nazwy.wskaznikow <- names(my.summary(df$tenure, TRUE))
 nazwy.zmiennych  <- c("tenure", "MonthlyCharges", "TotalCharges")
 tenure.summary <- as.vector(my.summary(df$tenure, TRUE))
@@ -77,7 +77,7 @@ summary.matrix <- rbind(tenure.summary, MonthlyCharges.summary,
 row.names(summary.matrix) <- nazwy.zmiennych
 colnames(summary.matrix)  <- nazwy.wskaznikow
 
-# Kod do generowania tabeli LaTeX (w R wypisze kod do konsoli) [cite: 20]
+# Kod do generowania tabeli LaTeX (w R wypisze kod do konsoli) 
 x <- matrix(summary.matrix, ncol = 9, nrow =3, byrow = FALSE)
 tabela_1 <- xtable(x,digits = 1, label ='tab_1')
 rownames(tabela_1) <- c("tenure", "MonthlyCharges", "TotalCharges")
@@ -199,4 +199,5 @@ ggpairs(df_churn_no, c("tenure", "MonthlyCharges", "TotalCharges"))
 # --- Porównanie obu grup ---
 
 # Wykresy słupkowe skategoryzowane po 'Churn' [cite: 108]
+
 plot_bar(df[, sapply(df, is.factor)], by = "Churn")
