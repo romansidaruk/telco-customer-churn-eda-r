@@ -59,13 +59,14 @@ Wykres `ggpairs` pokazuje korelacje oraz gęstości rozkładów dla głównych z
 
 Wykresy pokazują, że klienci, którzy odeszli (`Churn == "Yes"`), częściej mieli wyższe opłaty miesięczne. Rozkład dla klientów lojalnych (`Churn == "No"`) ma wyraźny pik przy niższych opłatach.
 
-`[WSTAW TUTAJ ZRZUT EKRANU DWÓCH HISTOGRAMÓW DLA "MonthlyCharges" - JEDEN DLA "df_churn_yes", DRUGI DLA "df_churn_no"]`
+![](hist1.png)
+![](hist2.png)
 
 ## 🚀 Jak Uruchomić Ten Projekt
 
 1.  Sklonuj repozytorium:
     ```bash
-    git clone https://github.com/TWOJA_NAZWA_UŻYTKOWNIKA/telco-customer-churn-analysis-R.git
+    git clone https://github.com/romansidaruk/telco-customer-churn-analysis-R.git
     ```
 2.  Upewnij się, że masz plik `WA_Fn-UseC_-Telco-Customer-Churn.csv` w tym samym folderze.
 3.  Zainstaluj wymagane biblioteki R:
